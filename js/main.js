@@ -144,7 +144,7 @@ for( let i=0; i<icons.length;i++){
 	container.innerHTML+= `
     <div class="col-2 d-flex align-items-center justify-content-center box">
 	    <div class="${icons[i].color}">
-		    <i class=" ${icons[i].family}-${icons[i].prefix}${icons[i].type}"></i>
+            <i class=“${icons[i].family} ${icons[i].prefix}-${icons[i].type}“></i>
 		    <div class="nome">${icons[i].name}</div>
 	    </div> 
     </div>
