@@ -144,34 +144,47 @@ function creaBox() {
 
   creaBox(icons);
 
+//Filtro elementi array
 
-// let tipologia = document.getElementById('tipologia');
+let animals = icons.filter((elemento) =>{
+      return elemento.type = "animals";
+  });
 
-// function sceltaTipo() {
-//     tipologia.addEventListener('change');{
-
-//         if(tipologia == "all"){
-//             container.innerHTML += "";
-            
-//         } if(tipologia == "animal"){
-//             container.innerHTML += "";
-            
-//         } if (tipologia == "vegetable"){
-//             container.innerHTML += "";
-            
-//         } if (tipologia == "user"){
-//             container.innerHTML += "";
-            
-//         }
-//     }
-// };
-
-let tipologia = document.getElementById('tipologia');
-
-tipologia.addEventListener('change',function () {
-
-    if(tipologia == "all"){
-        container.innerHTML = "";
-    }
-   
+let vegetable = icons.filter((elemento) =>{
+    return elemento.type = "vegetable";
 });
+
+let user = icons.filter((elemento) =>{
+    return elemento.type = "user";
+});
+
+
+//Creo evento con scelta icone
+
+let tipo = document.getElementById('tipologia');
+
+tipo.addEventListener('change',function () {
+
+    if(tipo == "all"){
+        container.innerHTML = "";
+        icons.forEach((elemento) => {
+			container.innerHTML += creaBox(elemento);
+		});
+    }else if (tipo.value == "animals") {
+		container.innerHTML = "";
+		animals.forEach((elemento) => {
+			container.innerHTML += creaBox(elemento);
+		});
+    }else if (tipo.value == "vegetable") {
+		container.innerHTML = "";
+		vegetable.forEach((elemento) => {
+			container.innerHTML += creaBox(elemento);
+		});
+    }else if (tipo.value == "user") {
+		container.innerHTML = "";
+		user.forEach((elemento) => {
+			container.innerHTML += creaBox(elemento);
+		});
+    }
+});
+
