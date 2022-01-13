@@ -1,11 +1,3 @@
-
-
-// Milestone 3
-// Aggiungere alla pagina una select in cui le options corrispondono
-// ai vari tipi di icone (animal, vegetable, user). Quando l’utente 
-//seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
-
-
 const icons = [
 	{
 		name: 'cat',
@@ -128,14 +120,14 @@ let container = document.getElementById("icons_container");
 
 // Creo funzione per inserire i box
 
-function creaBox() {
-    for( let i=0; i<icons.length;i++)
+function creaBox( iconeDaStampare ) {
+    for( let i=0; i<iconeDaStampare.length;i++)
 
 	    container.innerHTML+= `
             <div class="col-2 d-flex align-items-center justify-content-center text-center box">
-	            <div class="${icons[i].color}">
-                <i class="${icons[i].family} ${icons[i].prefix}${icons[i].name}"></i>
-		        <div class="nome">${icons[i].name}</div>
+	            <div class="${iconeDaStampare[i].color}">
+                <i class="${iconeDaStampare[i].family} ${iconeDaStampare[i].prefix}${iconeDaStampare[i].name}"></i>
+		        <div class="nome">${iconeDaStampare[i].name}</div>
 	            </div> 
             </div>
 		
@@ -147,44 +139,43 @@ function creaBox() {
 //Filtro elementi array
 
 let animals = icons.filter((elemento) =>{
-      return elemento.type = "animals";
+      return elemento.type == "animal";
   });
 
-let vegetable = icons.filter((elemento) =>{
-    return elemento.type = "vegetable";
+let vegetables = icons.filter((elemento) =>{
+    return elemento.type == "vegetable";
 });
 
-let user = icons.filter((elemento) =>{
-    return elemento.type = "user";
+let users = icons.filter((elemento) =>{
+    return elemento.type == "user";
 });
 
 
-//Creo evento con scelta icone
+//Creo evento con scelta tipologia
 
 let tipo = document.getElementById('tipologia');
 
 tipo.addEventListener('change',function () {
 
-    if(tipo == "all"){
+
+    if(tipo.value == "all"){
         container.innerHTML = "";
-        icons.forEach((elemento) => {
-			container.innerHTML += creaBox(elemento);
-		});
+		creaBox( icons )
+       
     }else if (tipo.value == "animals") {
 		container.innerHTML = "";
-		animals.forEach((elemento) => {
-			container.innerHTML += creaBox(elemento);
-		});
+		console.log( animals )
+		creaBox( animals )
     }else if (tipo.value == "vegetable") {
 		container.innerHTML = "";
-		vegetable.forEach((elemento) => {
-			container.innerHTML += creaBox(elemento);
-		});
+		creaBox( vegetables )
     }else if (tipo.value == "user") {
 		container.innerHTML = "";
-		user.forEach((elemento) => {
-			container.innerHTML += creaBox(elemento);
-		});
+		creaBox( users )
     }
 });
+
+// function generaColori() {
+// 	let randomColor = “#”+Math.floor(Math.random()*16777215).toString(16);
+// }
 

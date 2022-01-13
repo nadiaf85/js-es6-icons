@@ -22,11 +22,23 @@
     flex-wrap: wrap;
 }
 
+.header_top{
+    height: 80px;
+    color: #3399ff;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+}
+
 .header_bottom{
     height: 50px;
     text-align: center;
     background-color: #3399ff;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box{
